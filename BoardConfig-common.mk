@@ -4,18 +4,21 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+
+
+
 include device/samsung/sm8550-common/BoardConfigCommon.mk
 
-DEVICE_PATH := device/samsung/dm1q
+DEVICE_PATH := device/samsung/dmXq/$(MY_DEVICE_TARGET_BUILD)
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := dm1q
+TARGET_OTA_ASSERT_DEVICE := $(MY_DEVICE_TARGET_BUILD)
 
 # Display
 TARGET_SCREEN_DENSITY := 450
 
 # Kernel
-TARGET_KERNEL_CONFIG := dm1q_defconfig
+TARGET_KERNEL_CONFIG := $(MY_DEVICE_TARGET_BUILD)_defconfig
 
 # Kernel Modules
 BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load.recovery))
@@ -51,8 +54,27 @@ TARGET_KERNEL_EXT_MODULES := \
     qcom/opensource/video-driver \
     qcom/opensource/graphics-kernel \
     qcom/opensource/wlan/platform \
-    qcom/opensource/wlan/qcacld-3.0/.qca6490 \
     qcom/opensource/bt-kernel
+
+ifeq ($(PRODUCT_DEVICE),dm3q)
+    TARGET_KERNEL_EXT_MODULES += qcom/opensource/wlan/qcacld-3.0/.kiwi_v2
+else
+    TARGET_KERNEL_EXT_MODULES += qcom/opensource/wlan/qcacld-3.0/.qca6490
+endif
+
+ifeq ($(PRODUCT_DEVICE),dm3q)
+    BOARD_SUPER_PARTITION_SIZE := 12392071168
+else ifeq ($(PRODUCT_DEVICE),dm2q)
+    BOARD_SUPER_PARTITION_SIZE := 12100567040
+else ifeq ($(PRODUCT_DEVICE),dm1q)
+    BOARD_SUPER_PARTITION_SIZE := 12266242048
+endif
+
+
+# Partitions
+BOARD_SUPER_PARTITION_SIZE := 12266242048
 
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+# Include the proprietary files BoardConfig.
+include vendor/samsung/dmXq/BoardConfigVendor.mk

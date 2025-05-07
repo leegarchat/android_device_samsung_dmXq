@@ -5,6 +5,6 @@
 //
 
 runtime_resource_overlay {
-    name: "WifiResTargetDm1q",
+    name: "WifiResTarget_dm1q",
     vendor: true,
 }

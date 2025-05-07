@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device name="Android">
+    <item name="ambient.on">19.86</item>
+    <item name="screen.on.display0">82.6</item>
+    <item name="screen.full.display0">240.2</item>
+    <item name="camera.avg">264</item>
+    <item name="cpu.suspend">7.5</item>
+    <item name="cpu.idle">19.2</item>
+    <item name="battery.capacity">4565</item>
+    <item name="battery.typical.capacity">4700</item>
+    <item name="bluetooth.controller.idle">6</item>
+    <item name="bluetooth.controller.rx">28</item>
+    <item name="bluetooth.controller.tx">36</item>
+    <item name="bluetooth.controller.voltage">3700</item>
+    <item name="wifi.controller.rx">130</item>
+    <item name="wifi.controller.tx">420</item>
+</device>

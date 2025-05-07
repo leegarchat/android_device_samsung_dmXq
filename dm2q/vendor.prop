@@ -1,0 +1,6 @@
+# udfpsProps
+ro.vendor.fingerprint.type=udfps
+ro.vendor.fingerprint.sensor_location=540|1737|114
+
+# Radio
+ro.radio.noril=no
