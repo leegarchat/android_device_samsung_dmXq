@@ -24,9 +24,8 @@ PRODUCT_PACKAGES += \
 
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
-
-ifeq ($(PRODUCT_DEVICE),dm3q)
-    PRODUCT_SOONG_NAMESPACES += hardware/qcom-caf/wlan
+PRODUCT_SOONG_NAMESPACES += hardware/qcom-caf/wlan
+ifeq ($(MY_DEVICE_TARGET_BUILD),dm3q)
     PRODUCT_PACKAGES += \
         firmware_WCNSS_qcom_cfg.ini_symlink_dm3q \
         firmware_wlan_mac.bin_symlink_dm3q
@@ -53,4 +52,4 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, device/samsung/sm8550-common/common.mk)
 
 # Inherit from the proprietary files makefile.
-$(call inherit-product, vendor/samsung/dmXq/dmXq-vendor.mk)
+$(call inherit-product, vendor/samsung/$(MY_DEVICE_TARGET_BUILD)/$(MY_DEVICE_TARGET_BUILD)-vendor.mk)

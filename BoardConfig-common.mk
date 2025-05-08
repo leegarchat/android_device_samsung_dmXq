@@ -56,17 +56,17 @@ TARGET_KERNEL_EXT_MODULES := \
     qcom/opensource/wlan/platform \
     qcom/opensource/bt-kernel
 
-ifeq  ($(PRODUCT_DEVICE),dm3q)
+ifeq  ($(MY_DEVICE_TARGET_BUILD),dm3q)
     TARGET_KERNEL_EXT_MODULES += qcom/opensource/wlan/qcacld-3.0/.kiwi_v2
 else
     TARGET_KERNEL_EXT_MODULES += qcom/opensource/wlan/qcacld-3.0/.qca6490
 endif
 
-ifeq  ($(PRODUCT_DEVICE),dm3q)
+ifeq  ($(MY_DEVICE_TARGET_BUILD),dm3q)
     BOARD_SUPER_PARTITION_SIZE := 12392071168
-else ifeq  ($(PRODUCT_DEVICE),dm2q)
+else ifeq  ($(MY_DEVICE_TARGET_BUILD),dm2q)
     BOARD_SUPER_PARTITION_SIZE := 12100567040
-else ifeq  ($(PRODUCT_DEVICE),dm1q)
+else ifeq  ($(MY_DEVICE_TARGET_BUILD),dm1q)
     BOARD_SUPER_PARTITION_SIZE := 12266242048
 endif
 
@@ -77,4 +77,4 @@ BOARD_SUPER_PARTITION_SIZE := 12266242048
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 # Include the proprietary files BoardConfig.
-include vendor/samsung/dmXq/BoardConfigVendor.mk
+include vendor/samsung/$(MY_DEVICE_TARGET_BUILD)/BoardConfigVendor.mk

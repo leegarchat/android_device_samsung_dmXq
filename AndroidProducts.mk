@@ -18,5 +18,5 @@ COMMON_LUNCH_CHOICES := \
     lineage_dm3q-eng \
     lineage_dm1q-user \
     lineage_dm2q-user \
-    lineage_dm3q-user 
+    lineage_dm3q-user
 
